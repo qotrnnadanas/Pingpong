@@ -10,6 +10,7 @@ PFont font;
 Pingpong pingpong;
 Petunjuk petunjuk;
 Menu menu;
+Tentang tentang;
 
 int level = 2;
 Ball ball;
@@ -23,7 +24,8 @@ void setup() {
     size(1000, 600); 
     pingpong = new Pingpong();
     petunjuk = new Petunjuk();
-    menu = new Menu(pingpong, petunjuk);
+    tentang = new Tentang();
+    menu = new Menu(pingpong, petunjuk, tentang);
     menu.setup();
     // membuat sound files
     bet = new SoundFile(this, "bet.wav");
@@ -42,6 +44,10 @@ void draw() {
         pingpong.draw();
     } else if (menu.currentGame == 2) {
         petunjuk.draw();
+    } else if (menu.currentGame == 3) {
+        tentang.draw();
+    } else if (menu.currentGame == 4) {
+        exit();
     }
 }
 
