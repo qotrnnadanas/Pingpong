@@ -1,4 +1,4 @@
-class Game1 {
+class Pingpong {
     // Import Processing Sound library
   
     void setup() {
@@ -9,7 +9,7 @@ class Game1 {
       score = new Score();
       net = new Net();
       betR = new betkanan();
-      betL = new betkiri();// Kode setup game 1
+      betL = new betkiri();
     }
 
     void draw() {

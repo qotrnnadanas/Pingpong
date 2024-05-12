@@ -3,11 +3,12 @@ import processing.sound.*;
 SoundFile bet;
 SoundFile sides;
 SoundFile point;
+SoundFile backgroundSound;
 
 PFont font;
 
-Game1 game1;
-Game2 game2;
+Pingpong pingpong;
+Petunjuk petunjuk;
 Menu menu;
 
 int level = 2;
@@ -20,14 +21,16 @@ betkiri betL;
 
 void setup() {
     size(1000, 600); 
-    game1 = new Game1();
-    game2 = new Game2();
-    menu = new Menu(game1, game2);
+    pingpong = new Pingpong();
+    petunjuk = new Petunjuk();
+    menu = new Menu(pingpong, petunjuk);
     menu.setup();
     // membuat sound files
     bet = new SoundFile(this, "bet.wav");
     sides = new SoundFile(this, "pantul.wav");
     point = new SoundFile(this, "point.wav");
+    backgroundSound = new SoundFile(this, "background_sound.mp3");
+    backgroundSound.loop();
     //membuat font file
     font = createFont("LeelawadeeUI-Bold-48", 48);
 }
@@ -36,9 +39,9 @@ void draw() {
     if (menu.currentGame == 0) {
         menu.draw();
     } else if (menu.currentGame == 1) {
-        game1.draw();
+        pingpong.draw();
     } else if (menu.currentGame == 2) {
-        game2.draw();
+        petunjuk.draw();
     }
 }
 
