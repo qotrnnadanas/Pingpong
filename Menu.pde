@@ -5,6 +5,12 @@ class Menu {
     int currentGame = 0;
     PFont menuFont;
 
+    // Deklarasi variabel untuk tombol
+    int buttonX, buttonY, buttonWidth, buttonHeight;
+    String[] buttonLabels = {"Mulai", "Petunjuk", "Tentang", "Keluar"};
+    color buttonColor = color(51, 51, 51);
+    color buttonHoverColor = color(102, 102, 102);
+
     Menu(Pingpong pingpong, Petunjuk petunjuk, Tentang tentang) {
         this.pingpong = pingpong;
         this.petunjuk = petunjuk;
@@ -14,35 +20,51 @@ class Menu {
     void setup() {
         menuFont = createFont("Arial", 24);
         textFont(menuFont);
+
+        // Inisialisasi variabel untuk tombol
+        buttonX = width/2 - 100;
+        buttonY = height/2 - 80;
+        buttonWidth = 200;
+        buttonHeight = 40;
     }
 
     void draw() {
         background(#F0F0F0);
         fill(#333333);
         textAlign(CENTER, CENTER);
-        textSize(36);
-        text("Main Menu", width/2, height/4);
-        textSize(24);
-        text("1. Mulai", width/2, height/2 - 40);
-        text("2. Petunjuk", width/2, height/2);
-        text("3. Tentang", width/2, height/2 + 40);
-        text("4. Keluar", width/2, height/2 + 80);
+        textSize(48);
+        text("Game Menu", width/2, height/4);
+
+        // Gambar tombol
+        for (int i = 0; i < buttonLabels.length; i++) {
+            color buttonFill = buttonColor;
+            if (mouseX >= buttonX && mouseX <= buttonX + buttonWidth &&
+                mouseY >= buttonY + i * (buttonHeight + 20) && mouseY <= buttonY + buttonHeight + i * (buttonHeight + 20)) {
+                buttonFill = buttonHoverColor;
+            }
+            fill(buttonFill);
+            rect(buttonX, buttonY + i * (buttonHeight + 20), buttonWidth, buttonHeight, 10);
+            fill(#FFFFFF);
+            text(buttonLabels[i], buttonX + buttonWidth/2, buttonY + buttonHeight/2 + i * (buttonHeight + 20));
+        }
     }
 
-    void keyPressed() {
-        if (currentGame == 0) {
-            if (keyCode == '1') {
-                currentGame = 1;
-                pingpong.setup();
-            } else if (keyCode == '2') {
-                currentGame = 2;
-                petunjuk.setup();
-            } else if (keyCode == '3') {
-                currentGame = 3;
-                tentang.setup();
-            } else if (keyCode == '4') {
-                currentGame = 4;
-                // Tambahkan kode untuk keluar dari aplikasi
+    void mousePressed() {
+        // Cek jika mouse ditekan di area tombol
+        for (int i = 0; i < buttonLabels.length; i++) {
+            if (mouseX >= buttonX && mouseX <= buttonX + buttonWidth &&
+                mouseY >= buttonY + i * (buttonHeight + 20) && mouseY <= buttonY + buttonHeight + i * (buttonHeight + 20)) {
+                // Lakukan aksi sesuai tombol yang ditekan
+                currentGame = i + 1;
+                if (currentGame == 1) {
+                    pingpong.setup();
+                } else if (currentGame == 2) {
+                    petunjuk.setup();
+                } else if (currentGame == 3) {
+                    tentang.setup();
+                } else if (currentGame == 4) {
+                    // Tambahkan kode untuk keluar dari aplikasi
+                }
             }
         }
     }

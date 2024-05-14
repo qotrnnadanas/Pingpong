@@ -51,6 +51,6 @@ void draw() {
     }
 }
 
-void keyPressed() {
-    menu.keyPressed();
+void mousePressed() {
+    menu.mousePressed();
 }
