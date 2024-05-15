@@ -27,6 +27,7 @@ void setup() {
     tentang = new Tentang();
     menu = new Menu(pingpong, petunjuk, tentang);
     menu.setup();
+
     // membuat sound files
     bet = new SoundFile(this, "bet.wav");
     sides = new SoundFile(this, "pantul.wav");
