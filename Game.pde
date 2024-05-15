@@ -11,6 +11,7 @@ Pingpong pingpong;
 Petunjuk petunjuk;
 Menu menu;
 Tentang tentang;
+Setting setting;
 
 int level = 2;
 Ball ball;
@@ -25,6 +26,7 @@ void setup() {
     pingpong = new Pingpong();
     petunjuk = new Petunjuk();
     tentang = new Tentang();
+    setting = new Setting();
     menu = new Menu(pingpong, petunjuk, tentang);
     menu.setup();
 
@@ -38,18 +40,21 @@ void setup() {
     font = createFont("LeelawadeeUI-Bold-48", 48);
 }
 
-void draw() { 
-    if (menu.currentGame == 0) {
-        menu.draw();
-    } else if (menu.currentGame == 1) {
-        pingpong.draw();
-    } else if (menu.currentGame == 2) {
-        petunjuk.draw();
-    } else if (menu.currentGame == 3) {
-        tentang.draw();
-    } else if (menu.currentGame == 4) {
-        exit();
-    }
+void draw() {
+  if (menu.currentGame == 0) {
+    menu.draw();
+  } else if (menu.currentGame == 1) {
+    pingpong.draw();
+  } else if (menu.currentGame == 2) {
+    petunjuk.draw();
+  } else if (menu.currentGame == 3) {
+    tentang.draw();
+  } else if (menu.currentGame == 4) {
+    setting.display();
+    setting.updateVolume();
+  } else if (menu.currentGame == 5) {
+    exit();
+  }
 }
 
 void mousePressed() {
