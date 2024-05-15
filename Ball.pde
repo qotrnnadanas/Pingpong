@@ -52,5 +52,36 @@ class Ball {
       x = width/2;           // Bola dikembalikan ke tengah lebar layar
       score.scoreR ++;       // skor kanan bertambah satu
     }
+
+   //kecepatan bola jika skor mencapai batas tertentu
+    if (score.scoreR % 5 == 0 && score.scoreR > 0) {
+      speedX *= 1.005;
+      speedY *= 1.005;
+    }
+    if (score.scoreL % 5 == 0 && score.scoreL > 0) {
+      speedX *= 1.005;
+      speedY *= 1.005;
+    }
+
+    if (score.scoreR >= 2) {
+        speedX = 0;
+        speedY = 0;
+        textSize(48);
+        textAlign(CENTER, CENTER);
+        textFont(font);
+        fill(255);
+        text("Game Over \nPemain Kanan Menang!", width/2, height/2);
+        noLoop(); // Menghentikan loop draw()
+    }
+    if (score.scoreL >= 21) {
+        speedX = 0;
+        speedY = 0;
+        textSize(48);
+        textFont(font);
+        textAlign(CENTER, CENTER);
+        fill(255);
+        text("Game Over \nPemain Kiri Menang!", width/2, height/2);
+        noLoop(); // Menghentikan loop draw()
+    }
   }
 }
