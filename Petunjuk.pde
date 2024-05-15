@@ -1,47 +1,51 @@
 class Petunjuk {
-    int textAreaX, textAreaY, textAreaWidth, textAreaHeight;
-    
+    float opacity = 0; // Variabel untuk mengontrol opasitas teks
+    boolean showBackButton = false; // Variabel untuk mengontrol tampilan tombol kembali
 
     void setup() {
         size(800, 600); // Set ukuran jendela
-        textAreaX = 50;
-        textAreaY = 50;
-        textAreaWidth = width - 100;
-        textAreaHeight = height - 100;
     }
 
     void draw() {
-        background(0, 0, 255); // Latar belakang biru
-        fill(255); // Warna teks putih
-        textSize(14); // Ukuran teks 14
-        textAlign(LEFT, TOP); // Teks rata kiri atas
+        background(51, 51, 51); // Latar belakang abu-abu gelap
+        fill(255, opacity); // Warna teks putih dengan opasitas yang berubah
+        textSize(24); // Ukuran teks 24
+        textAlign(CENTER); // Teks rata tengah
 
         // Judul
-        textSize(20);
-        textAlign(CENTER);
-        textFont(createFont("Arial", 20, true));
-        text("Petunjuk Permainan", textAreaX + textAreaWidth/2, textAreaY);
-        textAlign(LEFT);
-        textSize(14);
+        textSize(24);
+        textFont(font);
+        text("Petunjuk Permainan", width/2, 80);
+        textFont(font);
+        textSize(12);
 
         // Deskripsi dan petunjuk
-        String instructions = "Selamat datang di \"Game Ping Pong Sederhana\"!\n\nCara Bermain:\n\nKontrol Bet Kiri:\nGunakan tombol 'W' untuk menggerakkan bet kiri ke atas.\nGunakan tombol 'S' untuk menggerakkan bet kiri ke bawah.\n\nKontrol Bet Kanan:\nGunakan tombol panah 'atas' untuk menggerakkan bet kanan ke atas.\nGunakan tombol panah 'bawah' untuk menggerakkan bet kanan ke bawah.\n\nTujuan Permainan:\nTujuan utama permainan adalah memantulkan bola dengan bet Anda dan mencetak skor 20 untuk memenangkan pertandingan. Skor meningkat setiap kali bola melewati bet lawan dan mengenai sisi layar yang kosong. Permainan berakhir ketika salah satu pemain mencapai skor 20.\n\nAturan Permainan:\n- Jangan biarkan bola melewati bet Anda, atau lawan akan mencetak skor.\n\nMenangani Skor:\nSkor pemain ditampilkan di bagian atas layar. Perhatikan skor Anda dan usahakan untuk mencetak skor lebih tinggi dari lawan.\n\nSekarang, Anda siap untuk memulai permainan!\nNikmati pengalaman bermain ping pong yang seru dan jadilah yang terbaik!";
+        String petunjuk = "Selamat datang di \"Game Ping Pong Sederhana\"!\n\nCara Bermain:\n\nKontrol Bet Kiri:\nGunakan tombol 'W' untuk menggerakkan bet kiri ke atas.\nGunakan tombol 'S' untuk menggerakkan bet kiri ke bawah.\n\nKontrol Bet Kanan:\nGunakan tombol panah 'atas' untuk menggerakkan bet kanan ke atas.\nGunakan tombol panah 'bawah' untuk menggerakkan bet kanan ke bawah.\n\nTujuan Permainan:\nTujuan utama permainan adalah memantulkan bola dengan bet Anda dan mencetak skor 20 untuk memenangkan pertandingan. \nSkor meningkat setiap kali bola melewati bet lawan dan mengenai sisi layar yang kosong. Permainan berakhir ketika salah satu pemain mencapai skor 20.\n\nAturan Permainan:\n- Jangan biarkan bola melewati bet Anda, atau lawan akan mencetak skor.\n\nMenangani Skor:\nSkor pemain ditampilkan di bagian atas layar. Perhatikan skor Anda dan usahakan untuk mencetak skor lebih tinggi dari lawan.\n\nSekarang, Anda siap untuk memulai permainan!\nNikmati pengalaman bermain ping pong yang seru dan jadilah yang terbaik!";
 
-        // Gambar text area
-        rect(textAreaX, textAreaY, textAreaWidth, textAreaHeight);
+        // Menampilkan deskripsi
+        textAlign(CENTER, CENTER);
+        text(petunjuk, width/2, height/2);
 
-        // Gambar teks
-        textArea(instructions, textAreaX + 10, textAreaY + 10, textAreaWidth - 20, textAreaHeight - 20);
+        // Animasi teks deskripsi
+        if (opacity < 255) {
+            opacity += 2; // Menambah opasitas teks secara bertahap
+        } else {
+            showBackButton = true; // Menampilkan tombol kembali setelah teks selesai muncul
+        }
+
+        // Tombol kembali
+        if (showBackButton) {
+            fill(255);
+            rect(width/2 - 100, height - 100, 200, 50, 10); // Kotak tombol
+            fill(0);
+            text("Kembali ke Menu", width/2, height - 75); // Teks tombol
+        }
     }
 
-    void textArea(String text, int x, int y, int w, int h) {
-        rectMode(CORNER);
-        noStroke();
-        fill(0, 0, 255);
-        rect(x, y, w, h);
-        fill(255);
-        textAlign(LEFT, TOP);
-        textSize(14);
-        text(text, x, y, w, h);
+    void mousePressed() {
+        // Cek jika tombol kembali diklik
+        if (showBackButton && mouseX >= width/2 - 100 && mouseX <= width/2 + 100 && mouseY >= height - 100 && mouseY <= height - 50) {
+            menu.currentGame = 0; // Kembali ke menu utama
+        }
     }
 }

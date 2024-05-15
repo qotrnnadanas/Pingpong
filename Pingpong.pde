@@ -1,4 +1,5 @@
 class Pingpong {
+    // Import Processing Sound library
   
     void setup() {
       // seting ukuran lapangan
