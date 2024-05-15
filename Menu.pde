@@ -2,6 +2,8 @@ class Menu {
     Pingpong pingpong;
     Petunjuk petunjuk;
     Tentang tentang;
+    Setting setting; // Mendeklarasikan variabel instance setting
+
     int currentGame = 0;
     PFont menuFont;
 
@@ -11,10 +13,11 @@ class Menu {
     color buttonColor = color(51, 51, 51);
     color buttonHoverColor = color(102, 102, 102);
 
-    Menu(Pingpong pingpong, Petunjuk petunjuk, Tentang tentang) {
+    Menu(Pingpong pingpong, Petunjuk petunjuk, Tentang tentang, Setting setting) {
         this.pingpong = pingpong;
         this.petunjuk = petunjuk;
         this.tentang = tentang;
+        this.setting = setting; // Menyimpan referensi objek Setting
     }
 
     void setup() {
@@ -63,7 +66,9 @@ class Menu {
                 } else if (currentGame == 3) {
                     tentang.setup();
                 } else if (currentGame == 4) {
-                    // Tambahkan kode untuk keluar dari aplikasi
+                    // Tidak perlu melakukan apapun, tampilan Pengaturan akan ditampilkan di draw()
+                } else if (currentGame == 5) {
+                    exit();
                 }
             }
         }

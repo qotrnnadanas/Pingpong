@@ -11,7 +11,7 @@ Pingpong pingpong;
 Petunjuk petunjuk;
 Menu menu;
 Tentang tentang;
-Setting setting;
+Setting setting; // Menambahkan objek Setting
 
 int level = 2;
 Ball ball;
@@ -20,14 +20,13 @@ Net net;
 betkanan betR;
 betkiri betL;
 
-
 void setup() {
-    size(1000, 600); 
+    size(1000, 600);
     pingpong = new Pingpong();
     petunjuk = new Petunjuk();
     tentang = new Tentang();
-    setting = new Setting();
-    menu = new Menu(pingpong, petunjuk, tentang);
+    setting = new Setting(); // Menginisialisasi objek Setting
+    menu = new Menu(pingpong, petunjuk, tentang, setting); // Menambahkan objek Setting ke konstruktor Menu
     menu.setup();
 
     // membuat sound files
@@ -41,22 +40,24 @@ void setup() {
 }
 
 void draw() {
-  if (menu.currentGame == 0) {
-    menu.draw();
-  } else if (menu.currentGame == 1) {
-    pingpong.draw();
-  } else if (menu.currentGame == 2) {
-    petunjuk.draw();
-  } else if (menu.currentGame == 3) {
-    tentang.draw();
-  } else if (menu.currentGame == 4) {
-    setting.display();
-    setting.updateVolume();
-  } else if (menu.currentGame == 5) {
-    exit();
-  }
+    if (menu.currentGame == 0) {
+        menu.draw();
+    } else if (menu.currentGame == 1) {
+        pingpong.draw();
+    } else if (menu.currentGame == 2) {
+        petunjuk.draw();
+    } else if (menu.currentGame == 3) {
+        tentang.draw();
+    } else if (menu.currentGame == 4) {
+        setting.display();
+        setting.updateVolume();
+    } else if (menu.currentGame == 5) {
+        exit();
+    }
 }
 
 void mousePressed() {
     menu.mousePressed();
+    tentang.mousePressed();
+    setting.updateVolume(); // Menangani klik mouse pada menu Pengaturan
 }
