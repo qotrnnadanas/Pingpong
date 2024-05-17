@@ -11,7 +11,7 @@ Pingpong pingpong;
 Petunjuk petunjuk;
 Menu menu;
 Tentang tentang;
-Setting setting; // Menambahkan objek Setting
+Setting setting;
 
 int level = 2;
 Ball ball;
@@ -25,8 +25,8 @@ void setup() {
     pingpong = new Pingpong();
     petunjuk = new Petunjuk();
     tentang = new Tentang();
-    setting = new Setting(); // Menginisialisasi objek Setting
-    menu = new Menu(pingpong, petunjuk, tentang, setting); // Menambahkan objek Setting ke konstruktor Menu
+    setting = new Setting();
+    menu = new Menu(pingpong, petunjuk, tentang, setting);
     menu.setup();
 
     // membuat sound files
@@ -59,5 +59,6 @@ void draw() {
 void mousePressed() {
     menu.mousePressed();
     tentang.mousePressed();
-    setting.updateVolume(); // Menangani klik mouse pada menu Pengaturan
+    setting.updateVolume();
+    petunjuk.mousePressed();
 }

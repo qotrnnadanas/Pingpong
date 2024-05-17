@@ -2,7 +2,7 @@ class Menu {
     Pingpong pingpong;
     Petunjuk petunjuk;
     Tentang tentang;
-    Setting setting; // Mendeklarasikan variabel instance setting
+    Setting setting;
 
     int currentGame = 0;
     PFont menuFont;
@@ -17,7 +17,7 @@ class Menu {
         this.pingpong = pingpong;
         this.petunjuk = petunjuk;
         this.tentang = tentang;
-        this.setting = setting; // Menyimpan referensi objek Setting
+        this.setting = setting;
     }
 
     void setup() {

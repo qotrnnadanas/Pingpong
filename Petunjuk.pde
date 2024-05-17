@@ -1,9 +1,14 @@
 class Petunjuk {
     float opacity = 0; // Variabel untuk mengontrol opasitas teks
-    boolean showBackButton = false; // Variabel untuk mengontrol tampilan tombol kembali
+    int buttonX, buttonY, buttonWidth, buttonHeight;
+    color buttonColor = color(255, 255, 255); // Deklarasi variabel buttonColor
 
     void setup() {
-        size(800, 600); // Set ukuran jendela
+       // size(800, 600); // Set ukuran jendela
+        buttonX = width/2 - 100;
+        buttonY = height - 100;
+        buttonWidth = 200;
+        buttonHeight = 40;
     }
 
     void draw() {
@@ -29,22 +34,18 @@ class Petunjuk {
         // Animasi teks deskripsi
         if (opacity < 255) {
             opacity += 2; // Menambah opasitas teks secara bertahap
-        } else {
-            showBackButton = true; // Menampilkan tombol kembali setelah teks selesai muncul
         }
 
-        // Tombol kembali
-        if (showBackButton) {
-            fill(255);
-            rect(width/2 - 100, height - 100, 200, 50, 10); // Kotak tombol
-            fill(0);
-            text("Kembali ke Menu", width/2, height - 75); // Teks tombol
-        }
+        // Tombol "Kembali"
+        fill(buttonColor);
+        rect(buttonX, buttonY, buttonWidth, buttonHeight, 10);
+        fill(0);
+        text("Kembali", buttonX + buttonWidth/2, buttonY + buttonHeight/2);
     }
 
     void mousePressed() {
-        // Cek jika tombol kembali diklik
-        if (showBackButton && mouseX >= width/2 - 100 && mouseX <= width/2 + 100 && mouseY >= height - 100 && mouseY <= height - 50) {
+        if (mouseX >= buttonX && mouseX <= buttonX + buttonWidth &&
+            mouseY >= buttonY && mouseY <= buttonY + buttonHeight) {
             menu.currentGame = 0; // Kembali ke menu utama
         }
     }
