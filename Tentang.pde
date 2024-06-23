@@ -19,7 +19,7 @@ class Tentang {
         // Judul
         textSize(48);
         textFont(font);
-        text("Tentang Permainan Ping Pong", width/2, 80);
+        text("About", width/2, 80);
         textFont(font); 
         textSize(24);
 

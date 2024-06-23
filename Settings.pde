@@ -1,5 +1,5 @@
 class Setting {
-  float volume = 1.0; // Volume awal diatur ke 1.0 (maksimum)
+  boolean isMuted = false; // Variabel untuk menyimpan status suara (bunyi atau tidak)
 
   Setting() {
     // Konstruktor
@@ -9,29 +9,34 @@ class Setting {
     background(50); // Latar belakang abu-abu gelap
     fill(255);
     textSize(32);
-    textFont(font); 
-    text("Pengaturan Volume", width/2, 50);
+    textFont(font);
+    text("Pengaturan Suara", width/2, 50);
 
-    // Slider untuk mengatur volume
-    stroke(255);
-    strokeWeight(4); // Garis slider lebih tebal
-    line(width/4, height/2, 3*width/4, height/2);
-    noStroke();
-    fill(255, 165, 0); // Warna jingga untuk penunjuk slider
-    rect(width/4 + (3*width/8)*volume - 15, height/2 - 15, 30, 30, 5); // Penunjuk slider berbentuk persegi dengan sudut lengkung
+    // Tombol untuk mengatur suara
+    int buttonX = width/2 - 100;
+    int buttonY = height/2 - 25;
+    int buttonWidth = 200;
+    int buttonHeight = 50;
 
-    // Teks untuk menampilkan nilai volume
-    fill(255);  
+    fill(isMuted ? color(255, 0, 0) : color(0, 255, 0)); // Warna tombol berdasarkan status suara
+    rect(buttonX, buttonY, buttonWidth, buttonHeight, 10); // Tombol dengan sudut lengkung
+
+    fill(255);
     textSize(24);
-    textFont(createFont("Arial", 24, true)); // Font modern
-    text("Volume: " + nf(volume, 0, 2), width/2, height/2 + 80);
+    textAlign(CENTER, CENTER);
+    text(isMuted ? "Hidupkan Suara" : "Matikan Suara", buttonX + buttonWidth/2, buttonY + buttonHeight/2);
   }
 
   void updateVolume() {
-    if (mousePressed && mouseX >= width/4 && mouseX <= 3*width/4 && mouseY >= height/2 - 30 && mouseY <= height/2 + 30) {
-      volume = map(mouseX, width/4, 3*width/4, 0, 1);
-      volume = constrain(volume, 0, 1); // Membatasi volume antara 0 dan 1
-      backgroundSound.amp(volume); // Mengatur amplitudo (volume) suara latar belakang
+    int buttonX = width/2 - 100;
+    int buttonY = height/2 - 25;
+    int buttonWidth = 200;
+    int buttonHeight = 50;
+
+    if (mousePressed && mouseX >= buttonX && mouseX <= buttonX + buttonWidth &&
+        mouseY >= buttonY && mouseY <= buttonY + buttonHeight) {
+      isMuted = !isMuted; // Mengubah status suara
+      backgroundSound.amp(isMuted ? 0 : 1); // Mengatur amplitudo suara latar belakang
     }
   }
 }

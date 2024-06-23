@@ -63,7 +63,7 @@ class Ball {
       speedY *= 1.005;
     }
 
-    if (score.scoreR >= 2) {
+    if (score.scoreR >= 21) {
         speedX = 0;
         speedY = 0;
         textSize(48);

@@ -6,12 +6,13 @@ class Menu {
 
     int currentGame = 0;
     PFont menuFont;
+    PImage bgImage; // Deklarasi variabel untuk gambar background
 
     // Deklarasi variabel untuk tombol
     int buttonX, buttonY, buttonWidth, buttonHeight;
     String[] buttonLabels = {"Mulai", "Petunjuk", "Tentang", "Setting", "Keluar"};
-    color buttonColor = color(51, 51, 51);
-    color buttonHoverColor = color(102, 102, 102);
+    color buttonColor = color(#76CDFA);
+    color buttonHoverColor = color(#709BF7);
 
     Menu(Pingpong pingpong, Petunjuk petunjuk, Tentang tentang, Setting setting) {
         this.pingpong = pingpong;
@@ -24,19 +25,21 @@ class Menu {
         menuFont = createFont("Arial", 24);
         textFont(menuFont);
 
+        // Memuat gambar background
+        bgImage = loadImage("bgImage2.png");
+
         // Inisialisasi variabel untuk tombol
-        buttonX = width/2 - 100;
+        buttonX = 130;
         buttonY = height/2 - 80;
         buttonWidth = 200;
         buttonHeight = 40;
     }
 
     void draw() {
-        background(#F0F0F0);
-        fill(#333333);
+        image(bgImage, 0, 0); // Menampilkan gambar background
+
         textAlign(CENTER, CENTER);
-        textSize(48);
-        text("Game Menu", width/2, height/4);
+        textSize(24);
 
         // Gambar tombol
         for (int i = 0; i < buttonLabels.length; i++) {
