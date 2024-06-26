@@ -61,4 +61,7 @@ void mousePressed() {
     tentang.mousePressed();
     setting.updateVolume();
     petunjuk.mousePressed();
+    if (menu.currentGame == 1) {
+        ball.handleButtonClick(); // Menangani interaksi dengan tombol dalam permainan
+    }
 }
