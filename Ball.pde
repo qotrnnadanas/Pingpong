@@ -66,33 +66,31 @@ class Ball {
     }
 
     if (score.scoreR >= 1) {
-        speedX = 0;
-        speedY = 0;
-        gameOver = true;
-        textSize(48);
-        textAlign(CENTER, CENTER);
-        textFont(font);
-        fill(255);
-        text("Game Over \nPemain Kanan Menang!", width/2, height/2 - 50);
-        drawButtons();
-        noLoop(); // Menghentikan loop draw()
+      speedX = 0;
+      speedY = 0;
+      gameOver = true;
+      textAlign(CENTER, CENTER);
+      textFont(font, 24);
+      fill(255);
+      text("Game Over \nPemain Kanan Menang!", width/2, height/2 - 50);
+      drawButtons();
+      noLoop(); // Menghentikan loop draw()
     }
     if (score.scoreL >= 1) {
-        speedX = 0;
-        speedY = 0;
-        gameOver = true;
-        textSize(48);
-        textFont(font);
-        textAlign(CENTER, CENTER);
-        fill(255);
-        text("Game Over \nPemain Kiri Menang!", width/2, height/2 - 50);
-        drawButtons();
-        noLoop(); // Menghentikan loop draw()
+      speedX = 0;
+      speedY = 0;
+      gameOver = true;
+      textFont(font, 24);
+      textAlign(CENTER, CENTER);
+      fill(255);
+      text("Game Over \nPemain Kiri Menang!", width/2, height/2 - 50);
+      drawButtons();
+      noLoop(); // Menghentikan loop draw()
     }
   }
 
   void drawButtons() {
-    int buttonWidth = 450;
+    int buttonWidth = 200;
     int buttonHeight = 50;
     int buttonX = width/2 - buttonWidth/2;
     int buttonY = height/2 + 100;
@@ -113,7 +111,7 @@ class Ball {
     text("Kembali ke Menu", buttonX + buttonWidth/2, buttonY + buttonHeight/2);
   }
    void mousePressed() {
-    int buttonWidth = 450;
+    int buttonWidth = 100;
     int buttonHeight = 50;
     int buttonX = width/2 - buttonWidth/2;
     int buttonY = height/2 + 100;
