@@ -6,6 +6,7 @@ class Ball {
   float speedX;
   float speedY;
   boolean gameOver = false;
+  boolean kembali = false;
 
   Ball () {
     x = width/2;
@@ -64,7 +65,7 @@ class Ball {
       speedY *= 1.005;
     }
 
-    if (score.scoreR >= 21) {
+    if (score.scoreR >= 1) {
         speedX = 0;
         speedY = 0;
         gameOver = true;
@@ -76,7 +77,7 @@ class Ball {
         drawButtons();
         noLoop(); // Menghentikan loop draw()
     }
-    if (score.scoreL >= 21) {
+    if (score.scoreL >= 1) {
         speedX = 0;
         speedY = 0;
         gameOver = true;
@@ -97,7 +98,7 @@ class Ball {
     int buttonY = height/2 + 100;
     
     // Tombol "Mulai Ulang"
-    fill(#4CAF50); // Warna hijau
+    fill(#3DC2EC); // Warna biru
     rect(buttonX, buttonY, buttonWidth, buttonHeight, 10);
     fill(255);
     textAlign(CENTER, CENTER);
@@ -111,7 +112,7 @@ class Ball {
     textAlign(CENTER, CENTER);
     text("Kembali ke Menu", buttonX + buttonWidth/2, buttonY + buttonHeight/2);
   }
-   void handleButtonClick() {
+   void mousePressed() {
     int buttonWidth = 450;
     int buttonHeight = 50;
     int buttonX = width/2 - buttonWidth/2;
@@ -120,6 +121,7 @@ class Ball {
     // Cek jika tombol "Mulai Ulang" ditekan
     if (mouseX >= buttonX && mouseX <= buttonX + buttonWidth &&
         mouseY >= buttonY && mouseY <= buttonY + buttonHeight) {
+          println("Mulai Ulang");
       resetGame();
     }
 
@@ -127,9 +129,10 @@ class Ball {
     buttonY += buttonHeight + 20;
     if (mouseX >= buttonX && mouseX <= buttonX + buttonWidth &&
         mouseY >= buttonY && mouseY <= buttonY + buttonHeight) {
-      menu.currentGame = 0; // Kembali ke menu utama
-    }
+          println("Kembali ke Menu");
+          kembali = true; // Kembali ke menu utama
   }
+}
 
   void resetGame() {
     x = width/2;

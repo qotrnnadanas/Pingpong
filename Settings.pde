@@ -1,8 +1,14 @@
 class Setting {
   boolean isMuted = false; // Variabel untuk menyimpan status suara (bunyi atau tidak)
+  int buttonX, buttonY, buttonWidth, buttonHeight;
+  color buttonColor = color(255, 255, 255); // Deklarasi variabel buttonColor
 
   Setting() {
     // Konstruktor
+    buttonX = width/2 - 100;
+    buttonY = height - 100;
+    buttonWidth = 200;
+    buttonHeight = 40;
   }
 
   void display() {
@@ -25,6 +31,12 @@ class Setting {
     textSize(24);
     textAlign(CENTER, CENTER);
     text(isMuted ? "Hidupkan Suara" : "Matikan Suara", buttonX + buttonWidth/2, buttonY + buttonHeight/2);
+
+    // Tombol "Kembali"
+    fill(buttonColor);
+    rect(this.buttonX, this.buttonY, buttonWidth, buttonHeight, 10);
+    fill(0);
+    text("Kembali", this.buttonX + buttonWidth/2, this.buttonY + buttonHeight/2);
   }
 
   void updateVolume() {
@@ -37,6 +49,13 @@ class Setting {
         mouseY >= buttonY && mouseY <= buttonY + buttonHeight) {
       isMuted = !isMuted; // Mengubah status suara
       backgroundSound.amp(isMuted ? 0 : 1); // Mengatur amplitudo suara latar belakang
+    }
+  }
+
+  void mousePressed() {
+    if (mouseX >= buttonX && mouseX <= buttonX + buttonWidth &&
+        mouseY >= buttonY && mouseY <= buttonY + buttonHeight) {
+      menu.currentGame = 0; // Kembali ke menu utama
     }
   }
 }

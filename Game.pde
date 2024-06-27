@@ -40,28 +40,56 @@ void setup() {
 }
 
 void draw() {
-    if (menu.currentGame == 0) {
-        menu.draw();
-    } else if (menu.currentGame == 1) {
-        pingpong.draw();
-    } else if (menu.currentGame == 2) {
-        petunjuk.draw();
-    } else if (menu.currentGame == 3) {
-        tentang.draw();
-    } else if (menu.currentGame == 4) {
-        setting.display();
-        setting.updateVolume();
-    } else if (menu.currentGame == 5) {
-        exit();
+    // Switch between game states
+    switch (menu.currentGame) {
+        case 0:
+            menu.draw();
+            break;
+        case 1:
+            pingpong.draw();
+            if (ball.kembali == true) {
+                menu.currentGame = 0;
+                }
+            break;
+        case 2:
+            petunjuk.draw();
+            break;
+        case 3:
+            tentang.draw();
+            break;
+        case 4:
+            setting.display();
+            setting.updateVolume();
+            break;
+        case 5:
+            exit();
+            break;
+        default:
+            println("Unknown game state: " + menu.currentGame);
+            break;
     }
 }
 
 void mousePressed() {
-    menu.mousePressed();
-    tentang.mousePressed();
-    setting.updateVolume();
-    petunjuk.mousePressed();
-    if (menu.currentGame == 1) {
-        ball.handleButtonClick(); // Menangani interaksi dengan tombol dalam permainan
+    switch (menu.currentGame) {
+        case 0:
+            menu.mousePressed();
+            break;
+        case 1:
+            ball.mousePressed(); // Handle button click in the game
+            break;
+        case 2:
+            petunjuk.mousePressed();
+            break;
+        case 3:
+            tentang.mousePressed();
+            break;
+        case 4:
+            setting.updateVolume();
+            setting.mousePressed();
+            break;
+        default:
+            println("Unknown game state: " + menu.currentGame);
+            break;
     }
 }
