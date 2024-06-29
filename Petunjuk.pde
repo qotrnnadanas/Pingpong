@@ -1,10 +1,10 @@
 class Petunjuk {
     float opacity = 0; // Variabel untuk mengontrol opasitas teks
     int buttonX, buttonY, buttonWidth, buttonHeight;
-    color buttonColor = color(255, 255, 255); // Deklarasi variabel buttonColor
+    color buttonColor = color(#76CDFA); // Deklarasi variabel buttonColor
+    color buttonHoverColor = color(#709BF7); // Deklarasi variabel buttonHoverColor
 
     void setup() {
-       // size(800, 600); // Set ukuran jendela
         buttonX = width/2 - 100;
         buttonY = height - 100;
         buttonWidth = 200;
@@ -12,7 +12,7 @@ class Petunjuk {
     }
 
     void draw() {
-        background(51, 51, 51); // Latar belakang abu-abu gelap
+        background(#1A5CA8); // Latar belakang biru
         fill(255, opacity); // Warna teks putih dengan opasitas yang berubah
         textSize(24); // Ukuran teks 24
         textAlign(CENTER); // Teks rata tengah
@@ -37,9 +37,14 @@ class Petunjuk {
         }
 
         // Tombol "Kembali"
-        fill(buttonColor);
+        color buttonFill = buttonColor;
+        if (mouseX >= buttonX && mouseX <= buttonX + buttonWidth &&
+            mouseY >= buttonY && mouseY <= buttonY + buttonHeight) {
+            buttonFill = buttonHoverColor;
+        }
+        fill(buttonFill);
         rect(buttonX, buttonY, buttonWidth, buttonHeight, 10);
-        fill(0);
+        fill(#FFFFFF);
         text("Kembali", buttonX + buttonWidth/2, buttonY + buttonHeight/2);
     }
 

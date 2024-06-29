@@ -65,7 +65,7 @@ class Ball {
       speedY *= 1.005;
     }
 
-    if (score.scoreR >= 1) {
+    if (score.scoreR >= 21) {
       speedX = 0;
       speedY = 0;
       gameOver = true;
@@ -76,7 +76,7 @@ class Ball {
       drawButtons();
       noLoop(); // Menghentikan loop draw()
     }
-    if (score.scoreL >= 1) {
+    if (score.scoreL >= 21) {
       speedX = 0;
       speedY = 0;
       gameOver = true;

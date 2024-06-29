@@ -1,7 +1,8 @@
 class Setting {
   boolean isMuted = false; // Variabel untuk menyimpan status suara (bunyi atau tidak)
   int buttonX, buttonY, buttonWidth, buttonHeight;
-  color buttonColor = color(255, 255, 255); // Deklarasi variabel buttonColor
+  color buttonColor = color(#76CDFA); // Deklarasi variabel buttonColor
+  color buttonHoverColor = color(#709BF7); // Deklarasi variabel buttonHoverColor
 
   Setting() {
     // Konstruktor
@@ -12,7 +13,7 @@ class Setting {
   }
 
   void display() {
-    background(50); // Latar belakang abu-abu gelap
+    background(#1A5CA8); // Latar belakang biru
     fill(255);
     textSize(32);
     textFont(font);
@@ -33,9 +34,14 @@ class Setting {
     text(isMuted ? "Hidupkan Suara" : "Matikan Suara", buttonX + buttonWidth/2, buttonY + buttonHeight/2);
 
     // Tombol "Kembali"
-    fill(buttonColor);
+    color buttonFill = buttonColor;
+    if (mouseX >= this.buttonX && mouseX <= this.buttonX + buttonWidth &&
+        mouseY >= this.buttonY && mouseY <= this.buttonY + buttonHeight) {
+      buttonFill = buttonHoverColor;
+    }
+    fill(buttonFill);
     rect(this.buttonX, this.buttonY, buttonWidth, buttonHeight, 10);
-    fill(0);
+    fill(#FFFFFF);
     text("Kembali", this.buttonX + buttonWidth/2, this.buttonY + buttonHeight/2);
   }
 
