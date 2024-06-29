@@ -1,5 +1,4 @@
 class Petunjuk {
-    float opacity = 0; // Variabel untuk mengontrol opasitas teks
     int buttonX, buttonY, buttonWidth, buttonHeight;
     color buttonColor = color(#76CDFA); // Deklarasi variabel buttonColor
     color buttonHoverColor = color(#709BF7); // Deklarasi variabel buttonHoverColor
@@ -13,12 +12,11 @@ class Petunjuk {
 
     void draw() {
         background(#1A5CA8); // Latar belakang biru
-        fill(255, opacity); // Warna teks putih dengan opasitas yang berubah
-        textSize(24); // Ukuran teks 24
+        fill(255); // Warna teks putih
         textAlign(CENTER); // Teks rata tengah
 
         // Judul
-        textSize(24);
+        textSize(32);
         textFont(font);
         text("Petunjuk Permainan", width/2, 80);
         textFont(font);
@@ -30,11 +28,6 @@ class Petunjuk {
         // Menampilkan deskripsi
         textAlign(CENTER, CENTER);
         text(petunjuk, width/2, height/2);
-
-        // Animasi teks deskripsi
-        if (opacity < 255) {
-            opacity += 2; // Menambah opasitas teks secara bertahap
-        }
 
         // Tombol "Kembali"
         color buttonFill = buttonColor;

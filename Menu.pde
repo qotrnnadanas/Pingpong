@@ -10,7 +10,7 @@ class Menu {
 
     // Deklarasi variabel untuk tombol
     int buttonX, buttonY, buttonWidth, buttonHeight;
-    String[] buttonLabels = {"Mulai", "Petunjuk", "Tentang", "Setting", "Keluar"};
+    String[] buttonLabels = {"Mulai", "Petunjuk", "About", "Setting", "Keluar"};
     color buttonColor = color(#76CDFA);
     color buttonHoverColor = color(#709BF7);
 
