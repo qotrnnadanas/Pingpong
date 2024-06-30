@@ -4,8 +4,8 @@ class Petunjuk {
     int downButtonX, downButtonY, downButtonWidth, downButtonHeight;
     color buttonColor = color(#76CDFA);
     color buttonHoverColor = color(#709BF7);
-    int textY = 200; // Posisi awal teks petunjuk
-    int textSpeed = 10; // Kecepatan pergerakan teks
+    int textY = 500; // Posisi awal teks petunjuk
+    int textSpeed = 100; // Kecepatan pergerakan teks
 
     void setup() {
         size(1000, 600);
@@ -36,7 +36,7 @@ class Petunjuk {
         textSize(24);
 
         // Deskripsi dan petunjuk
-        String petunjuk = "Selamat datang di \"Game Ping Pong Sederhana\"!\n\nCara Bermain:\n\nKontrol Bet Kiri:\nGunakan tombol 'W' untuk menggerakkan bet kiri ke atas.\nGunakan tombol 'S' untuk menggerakkan bet kiri ke bawah.\n\nKontrol Bet Kanan:\nGunakan tombol panah 'atas' untuk menggerakkan bet kanan ke atas.\nGunakan tombol panah 'bawah' untuk menggerakkan bet kanan ke bawah.\n\nTujuan Permainan:\nTujuan utama permainan adalah memantulkan bola\n dengan bet Anda dan mencetak skor 20 untuk memenangkan pertandingan. \nSkor meningkat setiap kali bola melewati bet lawan dan mengenai sisi layar yang kosong.\n Permainan berakhir ketika salah satu pemain mencapai skor 20.\n\nAturan Permainan:\n- Jangan biarkan bola melewati bet Anda, atau lawan akan mencetak skor.\n\nMenangani Skor:\nSkor pemain ditampilkan di bagian atas layar. Perhatikan skor Anda\n dan usahakan untuk mencetak skor lebih tinggi dari lawan.\n\nSekarang, Anda siap untuk memulai permainan!\nNikmati pengalaman bermain ping pong yang seru dan jadilah yang terbaik!";
+        String petunjuk = "Selamat datang di \"Game Ping Pong Sederhana\"\n\nCara Bermain:\n\nKontrol Bet Kiri:\nGunakan tombol 'W' untuk menggerakkan bet kiri ke atas.\nGunakan tombol 'S' untuk menggerakkan bet kiri ke bawah.\n\nKontrol Bet Kanan:\nGunakan tombol panah 'atas' untuk menggerakkan bet kanan ke atas.\nGunakan tombol panah 'bawah' untuk menggerakkan bet kanan ke bawah.\n\nTujuan Permainan:\nTujuan utama permainan adalah memantulkan bola\n dengan bet Anda dan mencetak skor 20 untuk memenangkan pertandingan. \nSkor meningkat setiap kali bola melewati bet lawan dan mengenai sisi layar yang kosong.\n Permainan berakhir ketika salah satu pemain mencapai skor 20.\n\nAturan Permainan:\n- Jangan biarkan bola melewati bet Anda, atau lawan akan mencetak skor.\n\nMenangani Skor:\nSkor pemain ditampilkan di bagian atas layar. Perhatikan skor Anda\n dan usahakan untuk mencetak skor lebih tinggi dari lawan.\n\nSekarang, Anda siap untuk memulai permainan!\nNikmati pengalaman bermain ping pong yang seru dan jadilah yang terbaik!";
 
         // Menampilkan deskripsi
         textAlign(CENTER, CENTER);
