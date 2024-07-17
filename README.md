@@ -23,8 +23,6 @@ Proyek "Game Ping Pong" menggunakan bahasa pemrograman Processing untuk membuat 
    - Usahakan untuk memantulkan bola dan hindari melewatkan bola.
    - Permainan berakhir ketika salah satu pemain mencapai skor tertentu.
 
-6. **Pemberhentian Permainan:**
-   - Untuk keluar dari permainan, tutup jendela game atau tekan tombol "ESC" di keyboard.
 
 
 # Anggota
