@@ -1,4 +1,4 @@
-#  GAME PING PONG SEDERHANA
+#  MINI PINGPONG
 Proyek "Game Ping Pong" menggunakan bahasa pemrograman Processing untuk membuat sebuah permainan sederhana yang menggambarkan konsep klasik permainan tenis meja atau ping pong. Permainan ini dimaksudkan untuk memberikan pengalaman yang menyenangkan dan menghibur kepada pemain sambil juga memberikan latihan dalam pengembangan permainan sederhana dengan menggunakan perangkat lunak Processing.
 # Petunjuk Penggunaan
 
